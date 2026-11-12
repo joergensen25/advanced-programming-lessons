@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class EdgeListGraph<V> implements Graph<V> {
+public class EdgeListGraph<V extends Comparable<V>> implements Graph<V> {
 
     public static void main(String[] args) {
         Graph<Integer> graph = new EdgeListGraph<>();
@@ -180,7 +180,6 @@ public class EdgeListGraph<V> implements Graph<V> {
      * Pre: The vertex is in the graph
      */
     public void removeVertex(V v) {
-
         // TODO
 
         vertices.remove(v);
@@ -231,6 +230,17 @@ public class EdgeListGraph<V> implements Graph<V> {
         }
         return stoerste;
     }
+
+    public V largestVertexGood() {
+        V biggestVertex = vertices.getFirst();
+        for (V vertex : vertices) {
+            if (vertex.compareTo(biggestVertex) > 0) {
+                biggestVertex = vertex;
+            }
+        }
+        return biggestVertex;
+    }
+
 
 }
 
